@@ -41,7 +41,7 @@ ax.set_ylabel("y")
 
 
 # *** modify and add your code here ***
-nexperiments = 1000* 100  # for example
+nexperiments = 1000  # for example
 nPar = 3
 
 # perform many least squares fits on different pseudo experiments here
@@ -50,7 +50,7 @@ nPar = 3
 par_a = np.random.rand(nexperiments)   # simple placeholders for making the plot example
 par_b = np.random.rand(nexperiments)   # these need to be filled using results from your fits
 par_c = np.random.rand(nexperiments)
-chi2_reduced = np.random.rand(nexperiments)
+chi2 = np.random.rand(nexperiments)
 
 # for each fit, do the following:
 for fit in range(nexperiments):
@@ -92,8 +92,12 @@ for fit in range(nexperiments):
     par_a[fit] = theta_list[0]
     par_b[fit] = theta_list[1]
     par_c[fit] = theta_list[2]
-    chi2_reduced[fit] = chi_square
+    chi2[fit] = chi_square
+chi2_reduced = chi2 / (nPnts - nPar)
 
+
+# to save as pdfs, just save the figures and add them to a 
+# word doc later on in life
 
 # now, plot the histograms of the fit parameters
 
@@ -101,28 +105,43 @@ fig, axs = plt.subplots(2, 2)
 plt.tight_layout()
 
 axs[0, 0].hist(par_a, bins = 100)
+axs[0, 0].set_title('Parameter a')
 axs[0, 1].hist(par_b, bins = 100)
+axs[0, 1].set_title('Parameter b')
 axs[1, 0].hist(par_c, bins = 100)
-axs[1, 1].hist(chi2_reduced, bins = 100)
+axs[1, 0].set_title('Parameter c')
+axs[1, 1].hist(chi2, bins = 100)
+axs[1, 1].set_title('Chi-Square')
 
+plt.tight_layout()
+fig.savefig('python_1d_histograms.pdf')
 fig.show()
 
 ##################################
 
+fig, axs = plt.subplots(2, 2)
+
 # careful, the automated binning may not be optimal for displaying your results!
-# axs[0, 0].hist2d(par_a, par_b)
-# axs[0, 0].set_title('Parameter b vs a')
+axs[0, 0].hist2d(par_a, par_b, bins = 100)
+axs[0, 0].set_title('Parameter b vs a')
 
-# axs[0, 1].hist2d(par_a, par_c)
-# axs[0, 1].set_title('Parameter c vs a')
+axs[0, 1].hist2d(par_a, par_c, bins = 100)
+axs[0, 1].set_title('Parameter c vs a')
 
-# axs[1, 0].hist2d(par_b, par_c)
-# axs[1, 0].set_title('Parameter c vs b')
+axs[1, 0].hist2d(par_b, par_c, bins = 100)
+axs[1, 0].set_title('Parameter c vs b')
 
-# axs[1, 1].hist(chi2_reduced)
-# axs[1, 1].set_title('Reduce chi^2 distribution')
+# to calculate reduced chi^2, all we need to do is to divide the chi_square by the number of degrees of freedom.
+# the degrees of freedom is just the number of data points minus the number of fit parameters.
+# in this case, reduces chi^2 is equal to
+# chi^2 ?=/ (nexperiments - nPar)
 
-# fig.show()
+axs[1, 1].hist(chi2_reduced, bins = 100)
+axs[1, 1].set_title('Reduced Chi^2')
+
+plt.tight_layout()
+fig.savefig('python_2d_histograms.pdf')
+fig.show()
 
 # **************************************
   
