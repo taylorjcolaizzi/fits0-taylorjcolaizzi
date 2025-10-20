@@ -55,6 +55,16 @@ void leastsq(){
   tg->Draw("alp");
 }
 
+TMatrixD SolveLSQ(const TMatrixD &A, const TMatrixD &y){
+  TMatrixD AT=(A);
+  AT.T(); // A transpose
+  TMatrixD ATAi(AT,TMatrixD::kMult,A);
+  ATAi.Invert();
+  TMatrixD Adag(ATAi,TMatrixD::kMult,AT); // thingy
+  TMatrixD theta(Adag,TMatrixD::kMult,y);
+  return theta;
+}
+
 int main(int argc, char **argv){
   TApplication theApp("App", &argc, argv); // init ROOT App for displays
 
