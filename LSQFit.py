@@ -16,6 +16,7 @@ def f(x,par):
     return par[0]+par[1]*log(x)+par[2]*log(x)*log(x)
 
 from random import gauss
+# this function is identital to np.arange()
 def getX(x):  # x = array-like
     step=(xmax-xmin)/npoints
     for i in range(npoints):

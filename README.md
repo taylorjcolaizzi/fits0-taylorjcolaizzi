@@ -2,8 +2,6 @@
 # fits 0
 
 Run the notebook LeastSquareFit.ipynb to see the code that generated the images in the .pdf.  
-  
-
 
 This repository contains some background examples leading up to 
 our discussion of fitting data.  
