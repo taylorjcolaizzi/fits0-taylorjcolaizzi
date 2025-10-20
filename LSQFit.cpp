@@ -7,6 +7,12 @@
 #include "TH1F.h"
 #include "TGClient.h"
 #include "TStyle.h"
+#include "Riostream.h"
+#include "TMatrixD.h"
+#include "TVectorD.h"
+#include "TF1.h"
+#include "TH1F.h"
+#include "TH2F.h"
 
 
 #include <iostream>
