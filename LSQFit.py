@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 
 xmin=1.0
 xmax=20.0
-npoints=12
+npoints=12*5*5
 sigma=0.2
 lx=np.zeros(npoints)
 ly=np.zeros(npoints)
@@ -41,7 +41,7 @@ ax.set_ylabel("y")
 
 
 # *** modify and add your code here ***
-nexperiments = 1000  # for example
+nexperiments = 1000*100  # for example
 nPar = 3
 
 # perform many least squares fits on different pseudo experiments here
@@ -147,3 +147,7 @@ fig.show()
   
 
 input("hit Enter to exit")
+print(np.mean(chi2), 'is chi-2 mean')
+print(np.mean(chi2_reduced), 'is reduced chi-2 mean')
+print(np.std(chi2), 'is chi-2 stdev')
+print(np.std(chi2_reduced), 'is reduced chi-2 stdev')
