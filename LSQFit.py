@@ -41,16 +41,16 @@ ax.set_ylabel("y")
 
 
 # *** modify and add your code here ***
-nexperiments = 1000  # for example
+nexperiments = 1000* 100  # for example
 nPar = 3
 
 # perform many least squares fits on different pseudo experiments here
 # fill histograms w/ required data
 
-par_a = np.random.rand(1000)   # simple placeholders for making the plot example
-par_b = np.random.rand(1000)   # these need to be filled using results from your fits
-par_c = np.random.rand(1000)
-chi2_reduced = np.random.rand(1000)
+par_a = np.random.rand(nexperiments)   # simple placeholders for making the plot example
+par_b = np.random.rand(nexperiments)   # these need to be filled using results from your fits
+par_c = np.random.rand(nexperiments)
+chi2_reduced = np.random.rand(nexperiments)
 
 # for each fit, do the following:
 for fit in range(nexperiments):
@@ -94,23 +94,35 @@ for fit in range(nexperiments):
     par_c[fit] = theta_list[2]
     chi2_reduced[fit] = chi_square
 
+
+# now, plot the histograms of the fit parameters
+
 fig, axs = plt.subplots(2, 2)
 plt.tight_layout()
 
-# careful, the automated binning may not be optimal for displaying your results!
-axs[0, 0].hist2d(par_a, par_b)
-axs[0, 0].set_title('Parameter b vs a')
-
-axs[0, 1].hist2d(par_a, par_c)
-axs[0, 1].set_title('Parameter c vs a')
-
-axs[1, 0].hist2d(par_b, par_c)
-axs[1, 0].set_title('Parameter c vs b')
-
-axs[1, 1].hist(chi2_reduced)
-axs[1, 1].set_title('Reduce chi^2 distribution')
+axs[0, 0].hist(par_a, bins = 100)
+axs[0, 1].hist(par_b, bins = 100)
+axs[1, 0].hist(par_c, bins = 100)
+axs[1, 1].hist(chi2_reduced, bins = 100)
 
 fig.show()
+
+##################################
+
+# careful, the automated binning may not be optimal for displaying your results!
+# axs[0, 0].hist2d(par_a, par_b)
+# axs[0, 0].set_title('Parameter b vs a')
+
+# axs[0, 1].hist2d(par_a, par_c)
+# axs[0, 1].set_title('Parameter c vs a')
+
+# axs[1, 0].hist2d(par_b, par_c)
+# axs[1, 0].set_title('Parameter c vs b')
+
+# axs[1, 1].hist(chi2_reduced)
+# axs[1, 1].set_title('Reduce chi^2 distribution')
+
+# fig.show()
 
 # **************************************
   
