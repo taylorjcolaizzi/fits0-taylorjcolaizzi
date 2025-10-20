@@ -17,8 +17,10 @@ using TMath::Log;
 //parms
 const double xmin=1;
 const double xmax=20;
-const int npoints=12;
+const int npoints=12; // modify for more points
 const double sigma=0.2;
+const int nexperiments=1000; // modify for more runs
+const int nPar=3; // tied to number of parameters below
 
 double f(double x){
   const double a=0.5;
@@ -80,6 +82,21 @@ int main(int argc, char **argv){
   // An example of one pseudo experiment
   tgl->Draw("alp");
   tc->Draw();
+
+  // here is my code!
+  float function_points[npoints];
+  float residuals[npoints];
+  float residuals_squared[npoints];
+  float chi_square = 0.; // placeholder
+  float reduced_chi_square = 0.; // placeholder too
+  for (int fit = 0; fit < nexperiments; fit++) {
+    getX(lx);
+    getY(lx, ly, ley);
+    for (int i = 0; i < npoints; i++) {
+      function_points[i] = f(lx[i]);
+    
+    } 
+  }
 
 
   
