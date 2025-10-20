@@ -94,7 +94,9 @@ int main(int argc, char **argv){
     getY(lx, ly, ley);
     for (int i = 0; i < npoints; i++) {
       function_points[i] = f(lx[i]);
-    
+      residuals[i] = ly[i] - function_points[i];
+      residuals_squared[i] = residuals[i] * residuals[i];
+      chi_square += residuals_squared[i] / (sigma + sigma);
     } 
   }
 
