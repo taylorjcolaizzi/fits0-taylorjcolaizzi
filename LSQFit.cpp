@@ -212,9 +212,9 @@ int main(int argc, char **argv){
   tc3->cd(4); h8->Draw();
   
   tc2->Draw();
-  tc2->Print("test_plot.png");
+  tc2->Print("cpp_2d_histograms.png");
   tc3->Draw();
-  tc3->Print("testing_plot.png");
+  tc3->Print("cpp_1d_histograms.png");
 
   // **************************************
   
