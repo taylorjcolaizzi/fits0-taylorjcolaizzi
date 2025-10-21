@@ -170,9 +170,9 @@ int main(int argc, char **argv){
 
   // *** modify and add your code here ***
 
-  TH2F *h1 = new TH2F("h1","Parameter b vs a;a;b",100,0.7,1,100,-0.5,0.5);
+  TH2F *h1 = new TH2F("h1","Parameter b vs a;a;b",100,-0.5,0.5,100,0.7,0.9);
   TH2F *h2 = new TH2F("h2","Parameter c vs a;a;c",100,-0.5,0.5,100,-0.025,-0.015);
-  TH2F *h3 = new TH2F("h3","Parameter c vs b;b;c",100,0.7,1,100,-0.025,-0.015);
+  TH2F *h3 = new TH2F("h3","Parameter c vs b;b;c",100,0.7,0.9,100,-0.025,-0.015);
   TH1F *h4 = new TH1F("h4","reduced chi^2;;frequency",100,0,4);
 
   TH1F *h5 = new TH1F("h5","Parameter a;;frequency",100,-1,1);
