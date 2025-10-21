@@ -25,7 +25,7 @@ const double xmin=1;
 const double xmax=20;
 const int npoints=12; // modify for more points
 const double sigma=0.2;
-const int nexperiments=1000; // modify for more runs
+const int nexperiments=3; // modify for more runs
 const int nPar=3; // tied to number of parameters below
 
 double f(double x){
@@ -105,6 +105,10 @@ int main(int argc, char **argv){
   float residuals_squared[npoints];
   float chi_square = 0.; // placeholder
   float reduced_chi_square = 0.; // placeholder too
+  TVectorD x; x.Use(npoints,lx);
+  TVectorD y; y.Use(npoints,ly);
+  TVectorD e; e.Use(npoints,ley);
+  TMatrixD A(npoints,nPar); // A matrix
   for (int fit = 0; fit < nexperiments; fit++) {
     getX(lx);
     getY(lx, ly, ley);
@@ -113,7 +117,12 @@ int main(int argc, char **argv){
       residuals[i] = ly[i] - function_points[i];
       residuals_squared[i] = residuals[i] * residuals[i];
       chi_square += residuals_squared[i] / (sigma + sigma);
-    } 
+    }
+    TMatrixDColumn(A,0) = 1.0; // parameter is a constant added
+    TMatrixDColumn(A,1) = x;
+    TMatrixDColumn(A,2) = x*x;
+    cout << "A = ";
+    A.Print();
   }
 
 
