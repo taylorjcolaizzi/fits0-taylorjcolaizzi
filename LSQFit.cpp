@@ -144,6 +144,13 @@ int main(int argc, char **argv){
     TMatrixD theta=SolveLSQ(A, yw);
     cout << "Param vector = ";
     theta.Print();
+
+    TF1 *fn1 = new TF1("fn1","[0] + [1]*x + [2]*x*x", xmin, xmax);
+
+    fn1->SetParameters(theta[0][0], theta[1][0], theta[2][0]);
+    tge->Draw("alp*");
+    fn1->Draw("same");
+    tc->Draw();
   }
 
 
