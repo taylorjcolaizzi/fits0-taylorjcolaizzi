@@ -140,6 +140,10 @@ int main(int argc, char **argv){
     A.Print();
     cout << "y weighted = ";
     yw.Print();
+
+    TMatrixD theta=SolveLSQ(A, yw);
+    cout << "Param vector = ";
+    theta.Print();
   }
 
 
