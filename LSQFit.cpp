@@ -87,7 +87,7 @@ int main(int argc, char **argv){
   TCanvas *tc = new TCanvas("c1","Sample dataset",dw,dh);
 
   double lx[npoints];
-  double lx2[npoints];
+  double lx2[npoints]; // will be lx * lx later on
   double ly[npoints];
   double ley[npoints];
 
@@ -128,6 +128,18 @@ int main(int argc, char **argv){
     TMatrixDColumn(A,2) = x2;
     cout << "A = ";
     A.Print();
+
+    // apply weights
+    TMatrix D yw(A.GenNrows(),1);
+
+    for (Int_t irow = 0; irow < A.GetNrows(); irow++) {
+      TMatrixDRow(A,irow) *= 1/ley(irow);
+      TMatrixDRow(yw,irow) += ly(irow)/ley(irow);
+    }
+    cout << "A weighted = ";
+    A.Print()
+    cout << "y weighted = ";
+    yw.Print();
   }
 
 
