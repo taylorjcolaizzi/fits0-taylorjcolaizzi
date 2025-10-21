@@ -213,6 +213,8 @@ int main(int argc, char **argv){
   
   tc2->Draw();
   tc2->Print("test_plot.png");
+  tc3->Draw();
+  tc3->Print("testing_plot.png");
 
   // **************************************
   
