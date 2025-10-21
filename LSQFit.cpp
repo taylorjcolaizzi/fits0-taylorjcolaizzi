@@ -186,7 +186,7 @@ int main(int argc, char **argv){
   
   TCanvas *tc2 = new TCanvas("c2","my study results",200,200,dw,dh);
   tc2->Divide(2,2);
-  tc2->cd(1); h1o->Draw("colz");
+  tc2->cd(1); h1->Draw("colz");
   tc2->cd(2); h2->Draw("colz");
   tc2->cd(3); h3->Draw("colz");
   tc2->cd(4); h4->Draw();
