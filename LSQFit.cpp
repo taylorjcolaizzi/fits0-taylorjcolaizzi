@@ -169,10 +169,10 @@ int main(int argc, char **argv){
 
   // *** modify and add your code here ***
 
-  TH2F *h1 = new TH2F("h1","Parameter b vs a;a;b",100,0,1,100,0,1);
-  TH2F *h2 = new TH2F("h2","Parameter c vs a;a;c",100,0,1,100,0,1);
-  TH2F *h3 = new TH2F("h3","Parameter c vs b;b;c",100,0,1,100,0,1);
-  TH1F *h4 = new TH1F("h4","reduced chi^2;;frequency",100,0,1);
+  TH2F *h1 = new TH2F("h1","Parameter b vs a;a;b",100,0.7,1,100,-0.5,0.5);
+  TH2F *h2 = new TH2F("h2","Parameter c vs a;a;c",100,-0.5,0.5,100,-0.025,-0.015);
+  TH2F *h3 = new TH2F("h3","Parameter c vs b;b;c",100,0.7,1,100,-0.025,-0.015);
+  TH1F *h4 = new TH1F("h4","reduced chi^2;;frequency",100,0,4);
 
   TH1F *h5 = new TH1F("h5","Parameter a;;frequency",100,-1,1);
   TH1F *h6 = new TH1F("h6","Parameter b;;frequency",100,-1,1);
@@ -187,7 +187,7 @@ int main(int argc, char **argv){
     // part 2 hists
     h1->Fill(a_parameters[i], b_parameters[i]);
     h2->Fill(a_parameters[i], c_parameters[i]);
-    h3->Fill(c_parameters[i], b_parameters[i]);
+    h3->Fill(b_parameters[i], c_parameters[i]);
     h4->Fill(red_chi_parameters[i]);
     // part 1 hists
     h5->Fill(a_parameters[i]);
