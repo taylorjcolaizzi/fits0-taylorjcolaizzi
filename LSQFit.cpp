@@ -168,12 +168,11 @@ int main(int argc, char **argv){
     // cout << "parameters";
   }
 
-
-  
   // *** modify and add your code here ***
 
-  TH1F *h1o = new TH1F("h1o","Parameter a", 100, 0, 1);
-  h1o.Fill(a_parameters);
+  auto theplot = new TH1F("theplot","Parameter a",100,0,1);
+  theplot->SetTitle("trying it right");
+  theplot->Draw();
 
 
   TH2F *h1 = new TH2F("h1","Parameter b vs a;a;b",100,0,1,100,0,1);
