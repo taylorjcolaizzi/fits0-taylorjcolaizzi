@@ -25,7 +25,7 @@ const double xmin=1;
 const double xmax=20;
 const int npoints=12; // modify for more points
 const double sigma=0.2;
-const int nexperiments=1000; // modify for more runs
+const int nexperiments=10000000; // modify for more runs
 const int nPar=3; // tied to number of parameters below
 
 double f(double x){
@@ -173,7 +173,7 @@ int main(int argc, char **argv){
   TH2F *h1 = new TH2F("h1","Parameter b vs a;a;b",100,-0.5,0.5,100,0.7,0.9);
   TH2F *h2 = new TH2F("h2","Parameter c vs a;a;c",100,-0.5,0.5,100,-0.025,-0.015);
   TH2F *h3 = new TH2F("h3","Parameter c vs b;b;c",100,0.7,0.9,100,-0.025,-0.015);
-  TH1F *h4 = new TH1F("h4","reduced chi^2;;frequency",100,0,4);
+  TH1F *h4 = new TH1F("h4","reduced chi^2;;frequency",100,0,0.5);
 
   TH1F *h5 = new TH1F("h5","Parameter a;;frequency",100,-1,1);
   TH1F *h6 = new TH1F("h6","Parameter b;;frequency",100,-1,1);
