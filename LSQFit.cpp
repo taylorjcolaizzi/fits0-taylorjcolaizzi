@@ -108,7 +108,7 @@ int main(int argc, char **argv){
   TVectorD x; x.Use(npoints,lx);
   TVectorD x2; x2.Use(npoints,lx); // will be squaring this.
   for (int index = 0; index < npoints; index++) {
-    x2[index] = x2[index] * x2[index];
+    x2(index) = x2(index) * x2(index);
   }
   TVectorD y; y.Use(npoints,ly);
   TVectorD e; e.Use(npoints,ley);
