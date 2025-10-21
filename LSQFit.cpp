@@ -91,8 +91,6 @@ int main(int argc, char **argv){
   double ly[npoints];
   double ley[npoints];
 
-  auto tge=new TGraphErrors(sizeof(lx)/sizeof(Double_t),lx,ly,0,ley);
-  auto tc=new TCanvas();
 
   getX(lx);
   getY(lx,ly,ley);
@@ -151,7 +149,7 @@ int main(int argc, char **argv){
     TF1 *fn1 = new TF1("fn1","[0] + [1]*x + [2]*x*x", xmin, xmax);
 
     fn1->SetParameters(theta[0][0], theta[1][0], theta[2][0]);
-    tge->Draw("alp*");
+    tgl->Draw("alp*");
     fn1->Draw("same");
     tc->Draw();
   }
