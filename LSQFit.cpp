@@ -121,6 +121,7 @@ int main(int argc, char **argv){
   for (int fit = 0; fit < nexperiments; fit++) {
     getX(lx);
     getY(lx, ly, ley);
+    chi_square = 0.0; // need to reset it.
     for (int i = 0; i < npoints; i++) {
       function_points[i] = f(lx[i]);
       residuals[i] = ly[i] - function_points[i];
