@@ -23,7 +23,7 @@ using TMath::Log;
 //parms
 const double xmin=1;
 const double xmax=20;
-const int npoints=60; // modify for more points
+const int npoints=12; // modify for more points
 const double sigma=0.2;
 const int nexperiments=10000; // modify for more runs
 const int nPar=3; // tied to number of parameters below
