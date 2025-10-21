@@ -133,8 +133,8 @@ int main(int argc, char **argv){
     TMatrixD yw(A.GetNrows(),1);
 
     for (Int_t irow = 0; irow < A.GetNrows(); irow++) {
-      TMatrixDRow(A,irow) *= 1/ley(irow);
-      TMatrixDRow(yw,irow) += ly(irow)/ley(irow);
+      TMatrixDRow(A,irow) *= 1/e(irow);
+      TMatrixDRow(yw,irow) += y(irow)/e(irow);
     }
     cout << "A weighted = ";
     A.Print()
