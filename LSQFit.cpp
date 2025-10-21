@@ -91,7 +91,7 @@ int main(int argc, char **argv){
   double ly[npoints];
   double ley[npoints];
 
-  auto tge=new TGraphErrors(sizeof(ax)/sizeof(Double_t),ax,ay,0,ae);
+  auto tge=new TGraphErrors(sizeof(lx)/sizeof(Double_t),lx,ly,0,ley);
   auto tc=new TCanvas();
 
   getX(lx);
