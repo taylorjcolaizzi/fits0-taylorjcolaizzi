@@ -137,7 +137,7 @@ int main(int argc, char **argv){
       TMatrixDRow(yw,irow) += y(irow)/e(irow);
     }
     cout << "A weighted = ";
-    A.Print()
+    A.Print();
     cout << "y weighted = ";
     yw.Print();
   }
