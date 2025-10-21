@@ -175,9 +175,9 @@ int main(int argc, char **argv){
   TH2F *h3 = new TH2F("h3","Parameter c vs b;b;c",100,0.7,0.9,100,-0.025,-0.015);
   TH1F *h4 = new TH1F("h4","reduced chi^2;;frequency",100,0,0.5);
 
-  TH1F *h5 = new TH1F("h5","Parameter a;;frequency",100,-1,1);
-  TH1F *h6 = new TH1F("h6","Parameter b;;frequency",100,-1,1);
-  TH1F *h7 = new TH1F("h7","Parameter c;;frequency",100,-1,1);
+  TH1F *h5 = new TH1F("h5","Parameter a;;frequency",100,-0.6,0.6);
+  TH1F *h6 = new TH1F("h6","Parameter b;;frequency",100,-0.6,1);
+  TH1F *h7 = new TH1F("h7","Parameter c;;frequency",100,-.1,.1);
   TH1F *h8 = new TH1F("h8","chi^2;;frequency",100,0,npoints);
 
   // perform many least squares fits on different pseudo experiments here
