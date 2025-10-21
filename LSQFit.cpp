@@ -25,7 +25,7 @@ const double xmin=1;
 const double xmax=20;
 const int npoints=12; // modify for more points
 const double sigma=0.2;
-const int nexperiments=3; // modify for more runs
+const int nexperiments=10; // modify for more runs
 const int nPar=3; // tied to number of parameters below
 
 double f(double x){
@@ -90,7 +90,11 @@ int main(int argc, char **argv){
   double lx2[npoints]; // will be lx * lx later on
   double ly[npoints];
   double ley[npoints];
-
+  double a_parameters[nexperiments];
+  double b_parameters[nexperiments];
+  double c_parameters[nexperiments];
+  double chi_parameters[nexperiments];
+  double red_chi_parameters[nexperiments];
 
   getX(lx);
   getY(lx,ly,ley);
@@ -101,8 +105,8 @@ int main(int argc, char **argv){
   tgl->SetTitle("Pseudoexperiment;x;y");
   
   // An example of one pseudo experiment
-  tgl->Draw("alp");
-  tc->Draw();
+  // tgl->Draw("alp");
+  // tc->Draw();
 
   // here is my code!
   float function_points[npoints];
@@ -124,11 +128,12 @@ int main(int argc, char **argv){
       residuals_squared[i] = residuals[i] * residuals[i];
       chi_square += residuals_squared[i] / (sigma + sigma);
     }
+    reduced_chi_square = chi_square / (npoints - nPar);
     TMatrixDColumn(A,0) = 1.0; // parameter is a constant added
     TMatrixDColumn(A,1) = x;
     TMatrixDColumn(A,2) = x2;
-    cout << "A = ";
-    A.Print();
+    // cout << "A = ";
+    // A.Print();
 
     // apply weights
     TMatrixD yw(A.GetNrows(),1);
@@ -137,21 +142,30 @@ int main(int argc, char **argv){
       TMatrixDRow(A,irow) *= 1/e(irow);
       TMatrixDRow(yw,irow) += y(irow)/e(irow);
     }
-    cout << "A weighted = ";
-    A.Print();
-    cout << "y weighted = ";
-    yw.Print();
+    // cout << "A weighted = ";
+    // A.Print();
+    // cout << "y weighted = ";
+    // yw.Print();
 
     TMatrixD theta=SolveLSQ(A, yw);
-    cout << "Param vector = ";
-    theta.Print();
+    // cout << "Param vector = ";
+    // theta.Print();
+
+    a_parameters(fit) = theta[0][0];
+    b_parameters(fit) = theta[1][0];
+    c_parameters(fit) = theta[2][0];
+
+    chi_parameters(fit) = chi_square;
+    red_chi_parameters(fit) = reduced_chi_square;
 
     TF1 *fn1 = new TF1("fn1","[0] + [1]*x + [2]*x*x", xmin, xmax);
 
     fn1->SetParameters(theta[0][0], theta[1][0], theta[2][0]);
-    tgl->Draw("alp*");
-    fn1->Draw("same");
-    tc->Draw();
+    // tgl->Draw("alp*");
+    // fn1->Draw("same");
+    // tc->Draw();
+
+    // cout << "parameters";
   }
 
 
