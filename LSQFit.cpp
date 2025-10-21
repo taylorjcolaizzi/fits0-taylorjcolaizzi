@@ -161,8 +161,8 @@ int main(int argc, char **argv){
     TF1 *fn1 = new TF1("fn1","[0] + [1]*x + [2]*x*x", xmin, xmax);
 
     fn1->SetParameters(theta[0][0], theta[1][0], theta[2][0]);
-    tgl->Draw("alp*");
-    fn1->Draw("same");
+    // tgl->Draw("alp*");
+    // fn1->Draw("same");
     // tc->Draw();
 
     // cout << "parameters";
@@ -203,6 +203,13 @@ int main(int argc, char **argv){
   tc2->cd(2); h2->Draw("colz");
   tc2->cd(3); h3->Draw("colz");
   tc2->cd(4); h4->Draw();
+
+  TCanvas * tc3 = new TCanvas("c2","my first study results",200,200,dw,dh);
+  tc3->Divide(2,2);
+  tc3->cd(1); h5->Draw();
+  tc3->cd(2); h6->Draw();
+  tc3->cd(3); h7->Draw();
+  tc3->cd(4); h8->Draw();
   
   tc2->Draw();
   tc2->Print("test_plot.png");
