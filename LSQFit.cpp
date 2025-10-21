@@ -179,10 +179,13 @@ int main(int argc, char **argv){
   // I actually did that earlier. My data is in the a, b, c chi-square arrays up top.
 
   // fill histograms w/ required data
-  h1->Fill(a_parameters, b_parameters);
-  h2->Fill(a_parameters, c_parameters);
-  h3->Fill(c_parameters, b_parameters);
-  h4->Fill(red_chi_parameters);
+  for (int i = 0; i < nexperiments; i++) {
+    h1->Fill(a_parameters[i], b_parameters[i]);
+    h2->Fill(a_parameters[i], c_parameters[i]);
+    h3->Fill(c_parameters[i], b_parameters[i]);
+    h4->Fill(red_chi_parameters[i]);
+  }
+  
   
   TCanvas *tc2 = new TCanvas("c2","my study results",200,200,dw,dh);
   tc2->Divide(2,2);
