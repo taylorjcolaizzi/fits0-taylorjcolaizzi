@@ -25,7 +25,7 @@ const double xmin=1;
 const double xmax=20;
 const int npoints=12; // modify for more points
 const double sigma=0.2;
-const int nexperiments=10; // modify for more runs
+const int nexperiments=1000; // modify for more runs
 const int nPar=3; // tied to number of parameters below
 
 double f(double x){
@@ -185,7 +185,6 @@ int main(int argc, char **argv){
     h3->Fill(c_parameters[i], b_parameters[i]);
     h4->Fill(red_chi_parameters[i]);
   }
-  
   
   TCanvas *tc2 = new TCanvas("c2","my study results",200,200,dw,dh);
   tc2->Divide(2,2);
