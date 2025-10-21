@@ -87,11 +87,15 @@ int main(int argc, char **argv){
   TCanvas *tc = new TCanvas("c1","Sample dataset",dw,dh);
 
   double lx[npoints];
+  double lx2[npoints];
   double ly[npoints];
   double ley[npoints];
 
   getX(lx);
   getY(lx,ly,ley);
+  for (int i = 0; i < npoints; i++) {
+    lx2[i] = lx[i] * lx[i];
+  }
   auto tgl = new TGraphErrors(npoints,lx,ly,0,ley);
   tgl->SetTitle("Pseudoexperiment;x;y");
   
@@ -106,10 +110,7 @@ int main(int argc, char **argv){
   float chi_square = 0.; // placeholder
   float reduced_chi_square = 0.; // placeholder too
   TVectorD x; x.Use(npoints,lx);
-  TVectorD x2; x2.Use(npoints,lx); // will be squaring this.
-  for (int index = 0; index < npoints; index++) {
-    x2(index) = x2(index) * x2(index);
-  }
+  TVectorD x2; x2.Use(npoints,lx2); // will is lx * lx
   TVectorD y; y.Use(npoints,ly);
   TVectorD e; e.Use(npoints,ley);
   TMatrixD A(npoints,nPar); // A matrix
