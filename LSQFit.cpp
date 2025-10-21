@@ -170,18 +170,19 @@ int main(int argc, char **argv){
 
   // *** modify and add your code here ***
 
-  auto theplot = new TH1F("theplot","Parameter a",100,0,1);
-  theplot->SetTitle("trying it right");
-  theplot->Draw();
-
-
   TH2F *h1 = new TH2F("h1","Parameter b vs a;a;b",100,0,1,100,0,1);
   TH2F *h2 = new TH2F("h2","Parameter c vs a;a;c",100,0,1,100,0,1);
   TH2F *h3 = new TH2F("h3","Parameter c vs b;b;c",100,0,1,100,0,1);
   TH1F *h4 = new TH1F("h4","reduced chi^2;;frequency",100,0,1);
 
   // perform many least squares fits on different pseudo experiments here
+  // I actually did that earlier. My data is in the a, b, c chi-square arrays up top.
+
   // fill histograms w/ required data
+  h1->Fill(a_parameters);
+  h2->Fill(b_parameters);
+  h3->Fill(c_parameters);
+  h4->Fill(red_chi_parameters);
   
   TCanvas *tc2 = new TCanvas("c2","my study results",200,200,dw,dh);
   tc2->Divide(2,2);
