@@ -151,19 +151,19 @@ int main(int argc, char **argv){
     // cout << "Param vector = ";
     // theta.Print();
 
-    a_parameters(fit) = theta[0][0];
-    b_parameters(fit) = theta[1][0];
-    c_parameters(fit) = theta[2][0];
+    a_parameters[fit] = theta[0][0];
+    b_parameters[fit] = theta[1][0];
+    c_parameters[fit] = theta[2][0];
 
-    chi_parameters(fit) = chi_square;
-    red_chi_parameters(fit) = reduced_chi_square;
+    chi_parameters[fit] = chi_square;
+    red_chi_parameters[fit] = reduced_chi_square;
 
     TF1 *fn1 = new TF1("fn1","[0] + [1]*x + [2]*x*x", xmin, xmax);
 
     fn1->SetParameters(theta[0][0], theta[1][0], theta[2][0]);
-    // tgl->Draw("alp*");
-    // fn1->Draw("same");
-    // tc->Draw();
+    tgl->Draw("alp*");
+    fn1->Draw("same");
+    tc->Draw();
 
     // cout << "parameters";
   }
