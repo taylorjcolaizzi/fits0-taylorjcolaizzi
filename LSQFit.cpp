@@ -203,7 +203,7 @@ int main(int argc, char **argv){
   tc2->cd(3); h3->Draw("colz");
   tc2->cd(4); h4->Draw();
   
-  // tc2->Draw();
+  tc2->Draw();
   tc2->Print("test_plot.png");
 
   // **************************************
