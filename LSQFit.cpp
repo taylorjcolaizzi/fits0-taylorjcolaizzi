@@ -172,6 +172,10 @@ int main(int argc, char **argv){
   
   // *** modify and add your code here ***
 
+  TH1F *h1o = new TH1F("h1o","Parameter a", 100, 0, 1);
+  h1o.Fill(a_parameters);
+
+
   TH2F *h1 = new TH2F("h1","Parameter b vs a;a;b",100,0,1,100,0,1);
   TH2F *h2 = new TH2F("h2","Parameter c vs a;a;c",100,0,1,100,0,1);
   TH2F *h3 = new TH2F("h3","Parameter c vs b;b;c",100,0,1,100,0,1);
@@ -182,7 +186,7 @@ int main(int argc, char **argv){
   
   TCanvas *tc2 = new TCanvas("c2","my study results",200,200,dw,dh);
   tc2->Divide(2,2);
-  tc2->cd(1); h1->Draw("colz");
+  tc2->cd(1); h1o->Draw("colz");
   tc2->cd(2); h2->Draw("colz");
   tc2->cd(3); h3->Draw("colz");
   tc2->cd(4); h4->Draw();
