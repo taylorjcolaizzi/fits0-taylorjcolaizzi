@@ -126,7 +126,7 @@ int main(int argc, char **argv){
       function_points[i] = f(lx[i]);
       residuals[i] = ly[i] - function_points[i];
       residuals_squared[i] = residuals[i] * residuals[i];
-      chi_square += residuals_squared[i] / (sigma + sigma);
+      chi_square += residuals_squared[i] / (sigma * sigma);
     }
     reduced_chi_square = chi_square / (npoints - nPar);
     TMatrixDColumn(A,0) = 1.0; // parameter is a constant added
