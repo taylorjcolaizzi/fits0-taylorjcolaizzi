@@ -130,7 +130,7 @@ int main(int argc, char **argv){
     A.Print();
 
     // apply weights
-    TMatrixD yw(A.GenNrows(),1);
+    TMatrixD yw(A.GetNrows(),1);
 
     for (Int_t irow = 0; irow < A.GetNrows(); irow++) {
       TMatrixDRow(A,irow) *= 1/ley(irow);
