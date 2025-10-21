@@ -106,10 +106,10 @@ int main(int argc, char **argv){
   float chi_square = 0.; // placeholder
   float reduced_chi_square = 0.; // placeholder too
   TVectorD x; x.Use(npoints,lx);
-  TVectorD x2; x2.Use(npoints,lx); // will be squaring this.
-  for (int index = 0; index < npoints; index++) {
-    x2[index] = x[index] * x[index];
-  }
+  TVectorD x2; x2.Use(npoints,lx*lx); // will be squaring this.
+  // for (int index = 0; index < npoints; index++) {
+  //   x2[index] = x2[index] * x2[index];
+  // }
   TVectorD y; y.Use(npoints,ly);
   TVectorD e; e.Use(npoints,ley);
   TMatrixD A(npoints,nPar); // A matrix
